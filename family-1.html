@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Family Photo Map</title>
+  <style>
+    .caption-box {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: #fff;
+      border: 2px solid #333;
+      padding: 10px;
+      display: none;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+
+<img src="family-photo-1.png" usemap="#familymap" alt="Family Photo">
+
+<map name="familymap">
+  <area shape="rect" coords="256,137,174,46" alt="Grandma Oran" onclick="showCaption('Grandma Oran (Caldonia)')">
+  <area shape="rect" coords="261,92,309,151" alt="Mattie Mae Oran" onclick="showCaption('Mattie Mae')">
+  <area shape="rect" coords="324,205,381,271" alt="Willis Lafayette Oran" onclick="showCaption('Willis Lafayette Oran (AKA Doc, Married to Kittie Johnson)')">
+  <area shape="rect" coords="377,85,428,152" alt="Daisy Etty Montooth (nee Oran)" onclick="showCaption('Daisy Etty Montooth (nee Oran)')">
+  <area shape="rect" coords="478,134,535,201"  alt="Harriman" onclick="showCaption('Harriman')">
+  <area shape="rect" coords="530,19,615,125" alt="Grandpa Oran" onclick="showCaption('Grandpa Oran')">
+  <area shape="rect" coords="627,103,701,174"  alt="James Arthur Oran (Jim)" onclick="showCaption('James Arthur Oran (Jim)')">
+
+</map>
+
+<div id="caption" class="caption-box"></div>
+
+<script>
+  function showCaption(text) {
+    const box = document.getElementById('caption');
+    box.innerText = text;
+    box.style.display = 'block';
+  }
+</script>
+
+<a href="index.html">← Back to Homepage</a>
+</body>
+</html>
