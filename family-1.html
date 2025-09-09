@@ -4,6 +4,26 @@
   <meta charset="UTF-8">
   <title>Family Photo Map</title>
   <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 40px;
+      text-align: center;
+    }
+    .photo-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    
+    img {
+      max-width: 90%;
+      height: auto;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+    }
     .caption-box {
       position: fixed;
       top: 20px;
@@ -15,47 +35,93 @@
       z-index: 1000;
     }
     .back-button {
-  display: inline-block;
-  margin: 30px auto;
-  padding: 12px 20px;
-  background-color: #007c91;
-  color: white;
-  text-decoration: none;
-  font-size: 16px;
-  border-radius: 8px;
-  transition: background-color 0.3s ease;
+      padding: 10px 16px;
+      background-color: #007c91;
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
 }
 
 .back-button:hover {
   background-color: #005f6b;
 }
-  </style>
+
+  </style><style>
+  /* Overlay background */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+
+  /* Modal box */
+  .modal-box {
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 10px;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    position: relative;
+  }
+
+  /* Close button */
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #888;
+    cursor: pointer;
+  }
+
+  .close-btn:hover {
+    color: #333;
+  }
+</style>
 </head>
 <body>
 
-<img src="family-photo-1.png" usemap="#familymap" alt="Family Photo">
+  <div class = "photo-container">
+    <img src="family-photo-1.png" usemap="#familymap" alt="Family Photo">
+    <map name="familymap">
+      <area shape="rect" coords="256,137,174,46" alt="Grandma Oran" onclick="showCaption('Grandma Oran (Caldonia)')">
+      <area shape="rect" coords="261,92,309,151" alt="Mattie Mae Oran" onclick="showCaption('Mattie Mae')">
+      <area shape="rect" coords="324,205,381,271" alt="Willis Lafayette Oran" onclick="showCaption('Willis Lafayette Oran (AKA Doc, Married to Kittie Johnson)')">
+      <area shape="rect" coords="377,85,428,152" alt="Daisy Etty Montooth (nee Oran)" onclick="showCaption('Daisy Etty Montooth (nee Oran)')">
+      <area shape="rect" coords="478,134,535,201"  alt="Harriman" onclick="showCaption('Harriman')">
+      <area shape="rect" coords="530,19,615,125" alt="Grandpa Oran" onclick="showCaption('Grandpa Oran')">
+      <area shape="rect" coords="627,103,701,174"  alt="James Arthur Oran (Jim)" onclick="showCaption('James Arthur Oran (Jim)')">
+    </map>
 
-<map name="familymap">
-  <area shape="rect" coords="256,137,174,46" alt="Grandma Oran" onclick="showCaption('Grandma Oran (Caldonia)')">
-  <area shape="rect" coords="261,92,309,151" alt="Mattie Mae Oran" onclick="showCaption('Mattie Mae')">
-  <area shape="rect" coords="324,205,381,271" alt="Willis Lafayette Oran" onclick="showCaption('Willis Lafayette Oran (AKA Doc, Married to Kittie Johnson)')">
-  <area shape="rect" coords="377,85,428,152" alt="Daisy Etty Montooth (nee Oran)" onclick="showCaption('Daisy Etty Montooth (nee Oran)')">
-  <area shape="rect" coords="478,134,535,201"  alt="Harriman" onclick="showCaption('Harriman')">
-  <area shape="rect" coords="530,19,615,125" alt="Grandpa Oran" onclick="showCaption('Grandpa Oran')">
-  <area shape="rect" coords="627,103,701,174"  alt="James Arthur Oran (Jim)" onclick="showCaption('James Arthur Oran (Jim)')">
+    <a href="index.html" class="back-button">← Back to Homepage</a><div id="caption" class="caption-box"></div>
+ </div>
+ <div id = "modal" class = "modal-overlay">
+  <div class = "modal-box">
+    <button class="close-btn" onclick="closeModal()">x</button>
+    <p id = "modal-text"></p>
+  </div>
+ </div>
 
-</map>
-
-<div id="caption" class="caption-box"></div>
 
 <script>
   function showCaption(text) {
-    const box = document.getElementById('caption');
-    box.innerText = text;
-    box.style.display = 'block';
+    document.getElementById('modal-text').innerText = text;
+    document.getElementById('modal').style.display = 'flex';}
+  function closeModal() {
+    document.getElementById('modal').style.display = 'none';
   }
 </script>
-
-<a href="index.html" class="back-button">← Back to Homepage</a>
 </body>
 </html>
