@@ -70,3 +70,44 @@ img {
 .close-btn:hover {
     color: #333;
   }
+
+
+  /*---------------Family Table---------------*/
+.family-table {
+  margin-top: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+.family-table h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.family-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.family-table th,
+.family-table td {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.family-table th {
+  background-color: #f0f0f0;
+  text-align: left;
+}
+
+.family-table a {
+  color: #007c91;
+  text-decoration: none;
+}
+
+.family-table a:hover {
+  text-decoration: underline;
+}  
